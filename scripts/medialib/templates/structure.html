@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8">
+<title>Proposed folder structure — $root_name</title>
+<style>$css</style>
+<h1>Proposed folder structure</h1>
+<p class="sub">$root_name · nothing has been changed yet</p>
+<div class="grid">
+  <div class="panel"><h2>Now — $folders_before folders, $depth_before levels deep</h2>
+    <ul>$before_rows</ul>
+    <p class="note">Red rows hold two files or fewer. There $sparse_verb <b>$sparse</b> of them.</p></div>
+  <div class="panel after"><h2>Proposed — $folders_after folders, $depth_after levels deep</h2>
+    $after_blocks</div>
+</div>
+<div class="stats">
+  <div class="stat"><b>$files_total</b><span>files in the library</span></div>
+  <div class="stat"><b>$files_moving</b><span>files that would move</span></div>
+  <div class="stat"><b>0</b><span>files deleted, ever</span></div>
+  <div class="stat"><b>$cleared</b><span>emptied folders cleared away</span></div>
+  $rename_tile$package_tile
+</div>
+<div class="safe"><b>No file is ever deleted.</b> Files are moved, never removed, and every move is
+written down first — one command puts the whole thing back exactly as it was. Folders that end up
+completely empty afterwards are tidied away; anything still holding a file is left alone.</div>

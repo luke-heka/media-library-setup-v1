@@ -1,0 +1,291 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="selr-skill-report/1"><title>Skill report — media-library-setup 1.0.0</title><style>
+/* ============================================================
+   Selr AI skill report — design system cloned from the
+   2026-07 ecosystem report, retained with layout/focus repairs.
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+.viz-root{
+  color-scheme:light;
+  --page:#f9f9f7; --card:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300;
+  --other:#c3c2b7; --shade-a:#86b6ef; --shade-b:#2a78d6; --track:#cde2fb;
+  --good:#0ca30c; --warning:#fab219; --serious:#ec835a; --critical:#d03b3b;
+  --up-good:#006300;
+  --sr:#6736e2;
+  --font:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--page); color:var(--ink); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; line-height:1.55;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])) .viz-root{
+    color-scheme:dark;
+    --page:#0d0d0d; --card:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300;
+    --other:#52514e; --shade-a:#1c5cab; --shade-b:#3987e5; --track:#0d366b;
+    --up-good:#0ca30c; --sr:#8155F0;
+  }
+}
+:root[data-theme="dark"] .viz-root{
+  color-scheme:dark;
+  --page:#0d0d0d; --card:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300;
+  --other:#52514e; --shade-a:#1c5cab; --shade-b:#3987e5; --track:#0d366b;
+  --up-good:#0ca30c; --sr:#8155F0;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px 96px}
+header.top{position:sticky;top:0;z-index:9;background:var(--page);
+  border-bottom:1px solid var(--border);padding:14px 0 10px;margin-bottom:28px}
+.top-in{max-width:1040px;margin:0 auto;padding:0 20px;display:flex;gap:16px;
+  align-items:center;flex-wrap:wrap}
+.brand{font-weight:650;font-size:15px;letter-spacing:-0.01em;margin-right:auto;flex:none;
+  display:inline-flex;align-items:center;gap:10px}
+.brand .logo{height:21px;width:auto;flex:none;display:block}
+.brand .sep{color:var(--muted);font-weight:450}
+nav{display:flex;gap:14px;flex:1 1 auto;min-width:0;overflow-x:auto;
+  justify-content:flex-end;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--ink-2);text-decoration:none;font-size:12.5px;
+  white-space:nowrap;border-bottom:1px solid transparent;padding-bottom:2px}
+nav a:hover{color:var(--ink);border-bottom-color:var(--axis)}
+button.theme{font:inherit;font-size:12.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;cursor:pointer;flex:none}
+button.theme:hover{color:var(--ink)}
+h1{font-size:30px;line-height:1.2;letter-spacing:-0.02em;margin:8px 0 6px;font-weight:680}
+h2{font-size:20px;letter-spacing:-0.01em;margin:0 0 6px;font-weight:650}
+h3{font-size:14px;margin:0 0 4px;font-weight:620}
+p.sub{color:var(--ink-2);margin:0 0 22px;font-size:14px;max-width:74ch}
+p.note{color:var(--muted);font-size:12.5px;margin:10px 0 0;max-width:78ch}
+section{margin:0 0 44px;scroll-margin-top:78px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.cards2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.tile .lab{color:var(--ink-2);font-size:12.5px;margin:0 0 8px}
+.tile .val{font-size:38px;line-height:1.05;font-weight:660;letter-spacing:-0.025em;
+  display:block;color:var(--ink)}
+.tile .val .unit{font-size:16px;font-weight:550;color:var(--ink-2);letter-spacing:0;
+  margin-left:6px}
+.tile .cap{color:var(--muted);font-size:11.5px;margin:9px 0 0;line-height:1.45}
+.hero{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:26px;display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+.hero .figure{font-size:60px;font-weight:680;letter-spacing:-0.03em;line-height:1}
+.hero .body{flex:1 1 320px;min-width:0}
+.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:5px 13px;
+  font-size:12.5px;font-weight:600;border:1px solid var(--border);background:var(--page)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.good .dot,.dot.good{background:var(--good)} .warning .dot,.dot.warning{background:var(--warning)}
+.critical .dot,.dot.critical{background:var(--critical)} .serious .dot,.dot.serious{background:var(--serious)}
+.chart-scroll{overflow-x:auto;margin:4px 0 0;-webkit-overflow-scrolling:touch}
+svg.chart{display:block;min-width:600px;font-family:var(--font)}
+svg .t-pri{fill:var(--ink)} svg .t-sec{fill:var(--ink-2)} svg .t-mut{fill:var(--muted)}
+svg .b{font-weight:620} svg .num{font-variant-numeric:tabular-nums}
+svg .grid{stroke:var(--grid);stroke-width:1} svg .axis{stroke:var(--axis);stroke-width:1}
+svg .s1{fill:var(--s1)} svg .s2{fill:var(--s2)} svg .s3{fill:var(--s3)}
+svg .s4{fill:var(--s4)} svg .s5{fill:var(--s5)} svg .s6{fill:var(--s6)}
+svg .other{fill:var(--other)} svg .track{fill:var(--track)}
+svg .node{fill:var(--page);stroke:var(--border);stroke-width:1}
+svg .node.accent{stroke:var(--sr);stroke-width:1.5}
+svg .edge{stroke:var(--axis);stroke-width:1.5;fill:none}
+svg .edge-head{fill:var(--axis)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--ink-2);font-weight:600;font-size:12px}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  background:var(--page);border:1px solid var(--border);border-radius:6px;padding:2px 6px;
+  word-break:break-word}
+.table-scroll{overflow-x:auto;margin-top:10px}
+.issue{border:1px solid var(--border);border-radius:14px;padding:18px 20px;background:var(--card)}
+.issue .head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.issue p{margin:0 0 4px;font-size:13px;color:var(--ink-2)}
+.verdict{position:relative;border:1px solid var(--border);border-radius:16px;padding:26px 26px 26px 34px;
+  display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin-bottom:16px;overflow:hidden}
+.verdict::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--vc)}
+.verdict.good{--vc:var(--good);background:color-mix(in srgb,var(--good) 7%,var(--card))}
+.verdict.warning{--vc:var(--warning);background:color-mix(in srgb,var(--warning) 9%,var(--card))}
+.verdict.critical{--vc:var(--critical);background:color-mix(in srgb,var(--critical) 8%,var(--card))}
+.verdict .score{flex:none;text-align:center;min-width:132px}
+.verdict .score .n{font-size:66px;font-weight:700;letter-spacing:-0.035em;line-height:1;color:var(--ink)}
+.verdict .score .of{font-size:13px;color:var(--muted);margin-top:2px}
+.verdict .vbody{flex:1 1 340px;min-width:0}
+.verdict .vlab{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--vc);
+  font-weight:700;margin:0 0 6px}
+.verdict h2{font-size:25px;margin:0 0 10px;letter-spacing:-0.02em}
+.verdict .bottom{font-size:15px;color:var(--ink);margin:0 0 8px;font-weight:560;line-height:1.5}
+.verdict .vnote{color:var(--ink-2);font-size:13px;margin:0}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:16px}
+.step{border:1px solid var(--border);border-radius:12px;padding:15px 16px;background:var(--page)}
+.step .sn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border-radius:50%;background:var(--sr);color:#fff;font-size:12px;font-weight:700;margin-bottom:9px}
+.step h4{font-size:13.5px;margin:0 0 5px;font-weight:640;letter-spacing:-0.01em}
+.step p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.step .who{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:0.07em;
+  color:var(--muted);margin-bottom:7px;font-weight:600}
+.say{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--page);margin-top:14px}
+.say h4{font-size:13px;margin:0 0 10px;font-weight:640}
+.say ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.say li{font-size:13px;color:var(--ink);padding-left:16px;position:relative}
+.say li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;
+  background:var(--sr)}
+.say li span{color:var(--muted);font-size:12px}
+footer.sr-foot{color:var(--muted);font-size:12px;border-top:1px solid var(--border);
+  padding-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+footer.sr-foot .logo{height:15px;width:auto;flex:none}
+footer.sr-foot b{color:var(--ink-2);font-weight:650}
+@media (max-width:640px){
+  h1{font-size:24px} .hero .figure{font-size:46px} .tile .val{font-size:31px}
+  .wrap{padding:0 14px 72px} .top-in{padding:0 14px} .card{padding:17px}
+  header.top{position:static} section{scroll-margin-top:12px}
+}
+button:focus-visible,a:focus-visible{outline:2px solid var(--sr);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><!-- Provenance signature: ⁠​‌​‌​​‌‌​‌​​​‌​‌​‌​​‌‌​​​‌​‌​​‌​​​‌‌​​​‌⁠ --></head><body><!-- Provenance marker: sk-w3709n --><div class="viz-root">
+
+<header class="top"><div class="top-in">
+  <span class="brand">
+    <svg class="logo" viewBox="430 402 440 95" xmlns="http://www.w3.org/2000/svg" aria-label="Selr AI"><path fill="var(--sr)" d="M466.43,429.13h48.92v-24.47h-67.3c-8.91,0-16.13,7.22-16.13,16.13,0,5.23,2.54,10.14,6.8,13.16l27.71,19.65v-24.47Z"/><path fill="var(--sr)" d="M483.68,446.39v24.47h-49.91v24.47h68.29c8.91,0,16.13-7.22,16.13-16.14,0-5.23-2.54-10.14-6.8-13.16l-27.71-19.65Z"/><path fill="var(--ink)" d="M619.04,448.4c-3.69-1.57-8.46-3.13-14.34-4.7-4.23-1.1-7.54-2.1-9.93-3-2.39-.9-4.39-2.13-6-3.7-1.61-1.57-2.41-3.64-2.41-6.23,0-2.12.65-4.04,1.94-5.76,1.29-1.72,3.07-3.07,5.35-4.06,2.27-.98,4.86-1.47,7.76-1.47,4.78,0,8.68,1.29,11.7,3.88,3.02,2.59,4.88,5.96,5.58,10.11l13.05-2.7c-.63-4.39-2.25-8.29-4.88-11.7-2.63-3.41-6.1-6.07-10.41-7.99-4.31-1.92-9.17-2.88-14.58-2.88s-10.33,1.02-14.75,3.06c-4.43,2.04-7.9,4.82-10.4,8.35-2.51,3.53-3.76,7.49-3.76,11.87,0,5.25,1.29,9.46,3.88,12.64,2.59,3.17,5.68,5.53,9.29,7.05,3.6,1.53,8.31,3.04,14.11,4.53,4.31,1.17,7.74,2.25,10.29,3.23,2.54.98,4.64,2.31,6.29,4,1.65,1.69,2.47,3.9,2.47,6.64,0,2.27-.7,4.31-2.12,6.11-1.41,1.8-3.37,3.23-5.88,4.29-2.51,1.06-5.37,1.59-8.58,1.59-5.33,0-9.58-1.21-12.76-3.64-3.17-2.43-5.15-5.88-5.94-10.35l-13.05,2.7c1.02,6.9,4.35,12.38,9.99,16.46,5.64,4.08,12.77,6.11,21.4,6.11,5.64,0,10.78-1.02,15.4-3.06,4.62-2.04,8.27-4.86,10.93-8.46,2.66-3.6,4-7.64,4-12.11,0-5.64-1.35-10.13-4.06-13.46-2.7-3.33-5.9-5.78-9.58-7.35"/><path fill="var(--ink)" d="M684.58,435.17c-4.98-3.17-10.64-4.76-16.99-4.76-5.8,0-11.09,1.37-15.87,4.11-4.78,2.74-8.54,6.51-11.29,11.29-2.75,4.78-4.11,10.07-4.11,15.87s1.39,11.07,4.17,15.81c2.78,4.74,6.6,8.48,11.46,11.23,4.86,2.75,10.27,4.11,16.22,4.11,6.35,0,12.01-1.53,16.99-4.59,4.98-3.06,8.8-7.13,11.46-12.23l-10.35-4.59c-1.72,3.37-4.13,6-7.23,7.88-3.1,1.88-6.6,2.82-10.52,2.82s-7.29-.9-10.35-2.7c-3.06-1.8-5.45-4.25-7.17-7.35-1.09-1.95-1.83-4.05-2.23-6.29h49.73c.7-6.43-.2-12.34-2.7-17.75-2.51-5.41-6.25-9.7-11.23-12.87M657.89,443.81c2.94-1.8,6.17-2.7,9.7-2.7s6.7.82,9.52,2.47c2.82,1.65,5.07,3.92,6.76,6.82,1.05,1.8,1.8,3.72,2.25,5.76h-37.06c.42-1.73,1.05-3.38,1.89-4.94,1.68-3.13,4-5.6,6.94-7.41"/><rect fill="var(--ink)" x="704.5" y="404.66" width="12.34" height="87"/><path fill="var(--ink)" d="M750,431.29c-3.37,1.06-6.27,3.35-8.7,6.88-1.7,2.47-3.07,5.6-4.11,9.38v-15.96h-12.34v60.08h12.34v-33.98c0-3.76,1.04-7,3.11-9.7,2.08-2.7,4.92-4.53,8.52-5.47,3.6-.94,7.52-.82,11.76.35v-11.76c-3.68-.94-7.21-.88-10.58.18"/><path fill="var(--ink)" d="M810.24,409.36l-35.74,82.3h9.41l9.47-21.98h43.13l9.47,21.98h9.64l-35.62-82.3h-9.76ZM796.93,461.44l18.02-41.82,18.02,41.82h-36.04Z"/><rect fill="var(--ink)" x="859.03" y="409.36" width="9.05" height="82.3"/></svg><span class="sep">·</span><span style="color:var(--ink-2);font-weight:550">Skill report</span>
+  </span>
+  <nav>
+    <a href="#overview">Overview</a><a href="#what">What it does</a><a href="#inside">Inside the skill</a>
+    <a href="#security">Security</a><a href="#fit">Business fit</a><a href="#verdict">Verdict</a>
+  </nav>
+  <button class="theme" id="themeBtn" type="button">Dark mode</button>
+</div></header>
+
+<div class="wrap">
+
+<section id="overview">
+<h1>media-library-setup 1.0.0</h1>
+<p class="sub">Turns a messy folder of photos, videos and audio into a two-level library you can browse, then makes it searchable by what was said. Reviewed 8 September 2026 from the canonical source after a full rebuild into a twelve-module package. Every text file was read in full; the tool was exercised only against fictional libraries in temporary folders.</p>
+<div class="verdict good"><div class="score"><div class="n">87</div><div class="of">out of 100</div></div>
+<div class="vbody"><p class="vlab">Review status</p><h2>No blocking findings in reviewed scope</h2>
+<p class="bottom">Two Low findings, both bounded: the setup check prints your Drive folder path (which contains the signed-in account email) into the chat, and the optional transcription step relies on ffmpeg installed by you through your operating system's package manager. Nothing is deleted, nothing leaves your computer until you confirm a quoted cost, and no code is fetched or executed from anywhere.</p>
+<p class="vnote">Coverage is complete for the 27 shipped files. Not exercised: a live OpenAI request, Windows and Linux hosts, a real streaming Google Drive mount. Score is a triage aid, not a safety certificate.</p></div></div>
+<div class="grid kpis">
+<div class="tile"><p class="lab">Source files</p><span class="val">27</span><p class="cap">Plus 9 byte-preserved originals of the previous version under history/original with a hash manifest, kept as inert .txt records.</p></div>
+<div class="tile"><p class="lab">Reviewed coverage</p><span class="val">100<span class="unit">%</span></span><p class="cap">Every shipped file read as text. No binaries. The history folder was inventoried by hash, not re-reviewed.</p></div>
+<div class="tile"><p class="lab">Executable files</p><span class="val">15</span><p class="cap">library.py (entry), 12 modules in medialib/, smoke.sh (test runner), test_library.py (tests). All plain, readable, standard library only.</p></div>
+<div class="tile"><p class="lab">Network destinations</p><span class="val">1</span><p class="cap">api.openai.com, reached only by <code>transcribe --yes</code>. Zero requests are made during review, organising, undo, manifest or search.</p></div>
+</div></section>
+
+<section id="what"><h2>How it works, in plain English</h2>
+<p class="sub">You point Claude at a folder. The tool counts what is there, proposes a flat structure, draws it as two pictures, and moves nothing until a named person approves exactly what was shown. Later, optionally, it sends audio to OpenAI to get timestamped transcripts, at a price it quotes first.</p>
+<div class="card"><h3>Who touches what</h3><div class="chart-scroll"><svg class="chart" viewBox="0 0 940 300" role="img" aria-label="Data flow: you approve, your AI runs the tool, the tool reads and moves files in your library folder, and only the transcribe step sends audio to OpenAI">
+<text class="t-sec" x="15" y="42">You</text><text class="t-sec" x="15" y="107">Your AI</text><text class="t-sec" x="15" y="172">The tool</text><text class="t-sec" x="15" y="237">Your files</text><text class="t-sec" x="15" y="290">OpenAI</text>
+<rect class="node accent" x="130" y="18" width="180" height="46" rx="9"/><text class="t-pri b" x="145" y="38" font-size="13">Say yes to the pictures</text><text class="t-mut" x="145" y="55" font-size="11">and later to a quoted cost</text>
+<rect class="node" x="130" y="83" width="180" height="46" rx="9"/><text class="t-pri b" x="145" y="103" font-size="13">Runs library.py</text><text class="t-mut" x="145" y="120" font-size="11">check → scan → plan → visualise</text>
+<rect class="node" x="360" y="83" width="180" height="46" rx="9"/><text class="t-pri b" x="375" y="103" font-size="13">apply --approved-by</text><text class="t-mut" x="375" y="120" font-size="11">refuses without a name + match</text>
+<rect class="node" x="590" y="83" width="180" height="46" rx="9"/><text class="t-pri b" x="605" y="103" font-size="13">transcribe --yes</text><text class="t-mut" x="605" y="120" font-size="11">only after the cost is shown</text>
+<rect class="node" x="130" y="148" width="180" height="46" rx="9"/><text class="t-pri b" x="145" y="168" font-size="13">Reads names and sizes</text><text class="t-mut" x="145" y="185" font-size="11">writes scan.json, plan.json, 2 HTML</text>
+<rect class="node" x="360" y="148" width="180" height="46" rx="9"/><text class="t-pri b" x="375" y="168" font-size="13">Moves files, logs each</text><text class="t-mut" x="375" y="185" font-size="11">rollback.csv, fsync, never overwrite</text>
+<rect class="node" x="590" y="148" width="180" height="46" rx="9"/><text class="t-pri b" x="605" y="168" font-size="13">ffmpeg → mp3 → POST</text><text class="t-mut" x="605" y="185" font-size="11">audio + key header, nothing else</text>
+<rect class="node" x="130" y="213" width="180" height="46" rx="9"/><text class="t-pri b" x="145" y="233" font-size="13">Untouched</text><text class="t-mut" x="145" y="250" font-size="11">read-only steps</text>
+<rect class="node" x="360" y="213" width="180" height="46" rx="9"/><text class="t-pri b" x="375" y="233" font-size="13">Reorganised in place</text><text class="t-mut" x="375" y="250" font-size="11">two levels, packages kept whole</text>
+<rect class="node" x="590" y="213" width="180" height="46" rx="9"/><text class="t-pri b" x="605" y="233" font-size="13">_Index/*.transcript.md</text><text class="t-mut" x="605" y="250" font-size="11">timestamped, banked locally first</text>
+<rect class="node accent" x="590" y="268" width="180" height="26" rx="9"/><text class="t-pri b" x="605" y="286" font-size="12">whisper-1, $0.006 per minute</text>
+<path class="edge" d="M220 64 V83"/><path class="edge" d="M220 129 V148"/><path class="edge" d="M450 129 V148"/><path class="edge" d="M680 129 V148"/>
+<path class="edge" d="M220 194 V213"/><path class="edge" d="M450 194 V213"/><path class="edge" d="M680 194 V213"/><path class="edge" d="M680 259 V268"/>
+<path class="edge" d="M310 106 H360"/><path class="edge" d="M540 106 H590"/>
+<text class="t-mut" x="800" y="100" font-size="11">Your AI reads the</text><text class="t-mut" x="800" y="114" font-size="11">tool's printed output,</text><text class="t-mut" x="800" y="128" font-size="11">so file names and the</text><text class="t-mut" x="800" y="142" font-size="11">Drive path enter the</text><text class="t-mut" x="800" y="156" font-size="11">hosted model context.</text>
+</svg></div>
+<div class="steps">
+<div class="step"><span class="sn">1</span><span class="who">Your AI</span><h4>check</h4><p>Reports Python version, whether Drive for Desktop, ffmpeg and a key are present, with the fix for each. Reads nothing in your library.</p></div>
+<div class="step"><span class="sn">2</span><span class="who">Your AI</span><h4>scan, plan</h4><p>Counts files, depth and near-empty folders; recognises Keynote-style packages as one item; proposes Videos / Photos / Audio / Documents / _Index per event. Writes only to its own state folder.</p></div>
+<div class="step"><span class="sn">3</span><span class="who">You</span><h4>visualise, then approve</h4><p>Two HTML pages open locally. A fingerprint of the exact plan is stamped into the plan file. You say yes, by name.</p></div>
+<div class="step"><span class="sn">4</span><span class="who">The tool</span><h4>apply</h4><p>Refuses without the fingerprint match, the visuals and a name. Moves each file, then logs it. Never overwrites. Clears only folders it emptied. Prints what it could not move.</p></div>
+<div class="step"><span class="sn">5</span><span class="who">You</span><h4>rollback, any time</h4><p>Previews the restore, changes nothing without a name, puts every file back under its original name and folder casing. Verified byte-identical in the test suite.</p></div>
+<div class="step"><span class="sn">6</span><span class="who">You, then OpenAI</span><h4>transcribe</h4><p>Measures every file with ffprobe, prints the dollar figure and the disk it will use, and stops. With <code>--yes</code> it converts audio locally and POSTs it to OpenAI. Paid results are banked before anything else is written.</p></div>
+<div class="step"><span class="sn">7</span><span class="who">The tool</span><h4>manifest, search</h4><p>Free and offline. One table per event of every file, and a line-by-line search of the transcripts that answers with the file and the minute.</p></div>
+</div>
+<div class="say"><h4>Source-supported example requests</h4><ul>
+<li>Organise my Google Drive media folder <span>— check, scan, plan, visualise, then waits for a yes</span></li>
+<li>Put my library back the way it was <span>— rollback preview, then rollback with a named approval</span></li>
+<li>Transcribe just the Brisbane workshop <span>— transcribe --only "Brisbane…" with the cost quoted first</span></li>
+<li>Find the bit where someone talks about pricing <span>— search pricing, returns event / file [mm:ss]</span></li>
+</ul></div></div></section>
+
+<section id="inside"><h2>Inside the skill, file by file</h2><p class="sub">Every shipped file, its size, the first 16 characters of its SHA-256, and how it was reviewed. Hashes are of the stamped files as delivered.</p>
+<div class="card table-scroll"><table><thead><tr><th>File</th><th>Purpose</th><th>Bytes / hash</th><th>Disposition</th></tr></thead><tbody>
+<tr><td><code>SKILL.md</code></td><td>Step-by-step instructions your AI follows; the two promises; the gates.</td><td class="n">14,986 · b456c93d…</td><td>Read in full. Matches code; verified by the docs-match-code tests.</td></tr>
+<tr><td><code>README.md</code></td><td>Plain-English overview, costs, install prompt.</td><td class="n">4,894 · eed0328e…</td><td>Read in full. No contact details, no support promises.</td></tr>
+<tr><td><code>SETUP-PROMPT.md</code></td><td>The paste-in install prompt.</td><td class="n">2,093 · 19fa897e…</td><td>Read in full.</td></tr>
+<tr><td><code>CHANGELOG.md</code></td><td>What changed in each version and why, 0.1.0 to 1.0.0.</td><td class="n">15,429 · efa4cf90…</td><td>Read in full. The 1.0.0 and 0.9.0 entries name the re-architecture and each defect fixed.</td></tr>
+<tr><td><code>references/setup.md</code></td><td>Each install with a fix for each failure.</td><td class="n">7,616 · 5b8ee766…</td><td>Read in full. Instructs the person to install ffmpeg via their OS package manager (finding L2).</td></tr>
+<tr><td><code>references/structure-rules.md</code></td><td>The two-level rule, packages, sidecars, naming.</td><td class="n">4,355 · aa198f6b…</td><td>Read in full.</td></tr>
+<tr><td><code>examples/media-library-setup-session.md</code></td><td>A fictional worked run.</td><td class="n">5,190 · 17252aeb…</td><td>Read in full. Fictional names and paths only.</td></tr>
+<tr><td><code>scripts/library.py</code></td><td>Entry point: puts the package on the path and runs cli.main.</td><td class="n">1,555 · f0b4bae9…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/__init__.py</code></td><td>Package docstring and VERSION.</td><td class="n">1,205 · 69ebcd2b…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/paths.py</code></td><td>Where state lives; the Library context; MEDIA_LIBRARY_WORK_DIR override.</td><td class="n">3,567 · 31117975…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/classify.py</code></td><td>File categories, packages, sidecars, junk; the safe folder walk.</td><td class="n">5,120 · 76afc660…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/system.py</code></td><td>Platform calls: open, Finder tags, ffprobe, casing, Drive mounts.</td><td class="n">4,477 · 467ad04e…</td><td>Read in full. Fixed argument lists, no shell.</td></tr>
+<tr><td><code>scripts/medialib/scan.py</code></td><td>Read-only survey -> Scan dataclass.</td><td class="n">4,111 · 9e7ff1d0…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/plan.py</code></td><td>Plan/Move dataclasses, shape detection, collision names, fingerprint.</td><td class="n">5,475 · fb280075…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/render.py</code></td><td>Fills the two visuals from templates; escapes every name.</td><td class="n">5,121 · 480823e4…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/journal.py</code></td><td>SQLite move journal; imports a legacy rollback.csv.</td><td class="n">3,616 · 60fa3866…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/apply.py</code></td><td>The gate, the mover, the undo. No unlink of any library file.</td><td class="n">7,334 · b0a97dcf…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/keystore.py</code></td><td>Key in environment or 0600 file. Never printed.</td><td class="n">1,532 · 8972b0ae…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/transcribe.py</code></td><td>Audio prep, estimate, Transcriber interface, OpenAIWhisper over urllib.</td><td class="n">11,198 · 6d13b648…</td><td>Read in full. One network destination.</td></tr>
+<tr><td><code>scripts/medialib/index.py</code></td><td>Manifest writer; FTS5 search index with LIKE fallback.</td><td class="n">8,646 · 594a444b…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/cli.py</code></td><td>Every command and every printed line.</td><td class="n">22,722 · 0265a6a7…</td><td>Read in full.</td></tr>
+<tr><td><code>scripts/medialib/templates/</code></td><td>base.css, structure.html, storage.html for the visuals.</td><td class="n">5,986 · 3 files</td><td>Read in full. No scripts, no external resources.</td></tr>
+<tr><td><code>scripts/smoke.sh</code></td><td>Parses the tool, asserts stdlib-only imports, runs the test suite.</td><td class="n">1,661 · c7af2db8…</td><td>Read in full. Writes only to a mktemp folder.</td></tr>
+<tr><td><code>tests/__init__.py</code></td><td>Package marker.</td><td class="n">70 · 5ada7660…</td><td>Read. Docstring only.</td></tr>
+<tr><td><code>tests/test_library.py</code></td><td>32 behavioural tests on fictional libraries in temp folders; fake transcriber for OpenAI.</td><td class="n">24,225 · 47991b3f…</td><td>Read in full. Executed: 32 passed on Python 3.14 (macOS).</td></tr>
+<tr><td><code>SELR-REPORT.html</code></td><td>This report.</td><td class="n">— · —</td><td>Authored by the reviewer. Its only script is the theme toggle.</td></tr>
+<tr><td><code>history/original/</code></td><td>9 previous-version files as .txt plus MANIFEST.sha256.</td><td class="n">110,018 · manifest 0f74c843…</td><td>Inventoried by hash. Inert records, not run, not re-reviewed.</td></tr>
+</tbody></table></div></section>
+
+<section id="security"><h2>Security review</h2><p class="sub">Six checks against the shipped source. Findings carry one ID per root cause. Nothing was run against real data or live services.</p><div class="grid cards2">
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass</span><h3>1. Hidden instructions</h3></div><p>SKILL.md, README and references were read for override attempts, authority claims and concealed actions. None. Provenance markers are present as declared HTML/comment text and a zero-width signature in headings; they are labelled as provenance, claim no runtime role, and were checked to contain no instructions. Docs tell the AI to stop on silence and refuse deletion, not the reverse.</p></div>
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass, with L1 noted</span><h3>2. Credential access</h3></div><p>The only secret is the OpenAI key. Read from <code>OPENAI_API_KEY</code> or a 0600 file the tool creates in the user's config folder via a hidden prompt or stdin (medialib/keystore.py). Never printed: <code>key --check</code> and <code>check</code> report only the character count. Sent only in the Authorization header to api.openai.com. No keychain, browser, SSH or cloud credential reads. <b>L1 (Low):</b> <code>check</code> prints the Drive mount path, which contains the signed-in Google account email, and that output is read by the hosted AI. Local disclosure to the user's own session; no transmission by the tool. Remediation if wanted: mask the account segment in the printed path.</p></div>
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass</span><h3>3. Network calls</h3></div><p>One destination in source: <code>https://api.openai.com/v1/audio/transcriptions</code> (medialib/transcribe.py, <code>ENDPOINT</code>, used by <code>OpenAIWhisper.transcribe</code>). Reached only inside <code>transcribe --yes</code>, after the estimate is printed and a key is present. Payload: the converted mp3 bytes, model name, response format, timestamp flag. Retries on 429/5xx with backoff; 401 and no-credit errors stop with plain-English messages. IPv4 is pinned for the call and restored after. No downloads, no fetch-and-execute, no telemetry. Observed requests during this review: zero (the test suite substitutes a fake transport).</p></div>
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass</span><h3>4. Destructive commands</h3></div><p>No user file is ever unlinked. Moves happen only in medialib/apply.py, gated by <code>check_gate</code>: plan present, both visuals present, approver name of two or more characters, and the plan fingerprint matching the one stamped at visualise time. <code>shutil.move</code> targets are checked with an exists/symlink/samefile guard so nothing is overwritten. Folders are removed with <code>rmdir</code> only when the plan emptied them and they are truly empty. Every move is one committed row in a SQLite journal (medialib/journal.py); rollback restores newest-first, restores original folder casing, and marks rows restored so failed ones stay pending for retry. A 0.x rollback.csv is imported on first open. Package folders are moved whole. The tests prove a nested fixture with a package, sidecars and a name collision restores byte-identical. Limitation: state files live in the user's own home folder; a user editing plan.json before visualise could approve a plan of their own making. That is not a boundary between users.</p></div>
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass</span><h3>5. Opaque code</h3></div><p>Twelve short, readable Python modules, no minification, no packed data, no eval/exec/compile, no dynamic imports, no shell strings. Subprocess calls use fixed argument lists: <code>open</code>/<code>xdg-open</code>/<code>os.startfile</code> for the two local HTML files, <code>/usr/bin/xattr</code> for Finder colours, <code>ffprobe</code> and <code>ffmpeg</code> for audio. smoke.sh asserts every import across the package is standard library. HTML comes from three template files filled with string.Template. No binaries anywhere in the skill.</p></div>
+<div class="issue"><div class="head"><span class="pill good"><span class="dot good"></span>Pass, with L2 noted</span><h3>6. Permission and persistence scope</h3></div><p>No hooks, no scheduled tasks, no shell-profile edits, no config edits outside its own folders, no package installs by the tool. Writes: <code>~/active/media-library-setup/&lt;library&gt;/</code> state (overridable), <code>~/.config/media-library-setup/openai-key</code>, and inside the library only the approved moves plus <code>_Index/</code> transcripts and manifests. <b>L2 (Low):</b> the optional transcription step depends on ffmpeg, which the docs ask the person to install through brew, winget or apt, unpinned. Bounded: optional, user-run, from the OS package manager, never fetched by the tool.</p></div>
+</div>
+<p class="note">Scoring: two distinct Low findings at 5 points each = 10. Executable scripts present, so ×1.3 = 13, rounded up = 13. Review score = 100 − 13 = 87. No blocking finding, coverage complete, so the band is "No blocking findings in reviewed scope". The number is triage, not certification.</p></section>
+
+<section id="fit"><h2>Business fit</h2><div class="card">
+<p><b>Good fit:</b> anyone with event footage, client shoots, workshop recordings or podcast audio scattered across a Drive, who wants to find a clip by what was said rather than by filename, and who wants the reorganisation to be reversible. Cost to organise is nothing; cost to transcribe is quoted per library before anything is sent, at $0.006 per minute (price checked on the OpenAI pricing page 2026-09-08 and printed with every estimate).</p>
+<p><b>Not a fit:</b> libraries that must keep deep bespoke folder trees (the tool flattens to two levels and says so up front); shared drives where several people reorganise at once (one state folder per library path, no locking); anyone who cannot install Google Drive for Desktop and whose files are only in the cloud (the tool works on local folders only).</p>
+<p><b>Dependencies:</b> Python 3.9+; Google Drive for Desktop only if the media lives in Drive; ffmpeg and an OpenAI key only for transcription. Google offers no Drive for Desktop on Linux.</p>
+<p><b>Claims checked against source:</b> "no file is ever deleted" holds (no unlink of library files anywhere); "it can all be undone" holds for moves and is tested, and the docs now say transcripts and manifests written afterwards are new files that stay; "nothing is charged until you confirm" holds (no request without <code>--yes</code> and a key).</p>
+</div></section>
+
+<section id="verdict"><h2>Verdict and next step</h2><div class="hero"><div class="pill good"><span class="dot good"></span>No blocking findings</div><div class="body">
+<p><b>What passed:</b> all six checks on complete coverage of 27 shipped files; 32 offline behavioural tests including the full organise-and-undo round trip, every approval gate, the transcription path with a fake transport, the key store permissions and the docs-match-code checks.</p>
+<p><b>What was found:</b> two Low, bounded items (Drive path printed to the chat; ffmpeg installed unpinned by the user). Neither blocks use.</p>
+<p><b>What remains unproven:</b> a live OpenAI request and its billing, behaviour on Windows and Linux, and a real streaming Drive mount under transcription load. The first real run should transcribe one short event with <code>--only</code> and check the printed cost against the OpenAI usage page.</p>
+<p><b>Next step:</b> run <code>bash scripts/smoke.sh</code> on the machine it was installed on and confirm the last line starts with <code>ok:</code>, then <code>library.py check</code>.</p>
+</div></div></section>
+
+<footer class="sr-foot" id="sr-brand">
+  <svg class="logo" viewBox="430 402 440 95" xmlns="http://www.w3.org/2000/svg" aria-label="Selr AI"><path fill="var(--sr)" d="M466.43,429.13h48.92v-24.47h-67.3c-8.91,0-16.13,7.22-16.13,16.13,0,5.23,2.54,10.14,6.8,13.16l27.71,19.65v-24.47Z"/><path fill="var(--sr)" d="M483.68,446.39v24.47h-49.91v24.47h68.29c8.91,0,16.13-7.22,16.13-16.14,0-5.23-2.54-10.14-6.8-13.16l-27.71-19.65Z"/><path fill="var(--ink)" d="M619.04,448.4c-3.69-1.57-8.46-3.13-14.34-4.7-4.23-1.1-7.54-2.1-9.93-3-2.39-.9-4.39-2.13-6-3.7-1.61-1.57-2.41-3.64-2.41-6.23,0-2.12.65-4.04,1.94-5.76,1.29-1.72,3.07-3.07,5.35-4.06,2.27-.98,4.86-1.47,7.76-1.47,4.78,0,8.68,1.29,11.7,3.88,3.02,2.59,4.88,5.96,5.58,10.11l13.05-2.7c-.63-4.39-2.25-8.29-4.88-11.7-2.63-3.41-6.1-6.07-10.41-7.99-4.31-1.92-9.17-2.88-14.58-2.88s-10.33,1.02-14.75,3.06c-4.43,2.04-7.9,4.82-10.4,8.35-2.51,3.53-3.76,7.49-3.76,11.87,0,5.25,1.29,9.46,3.88,12.64,2.59,3.17,5.68,5.53,9.29,7.05,3.6,1.53,8.31,3.04,14.11,4.53,4.31,1.17,7.74,2.25,10.29,3.23,2.54.98,4.64,2.31,6.29,4,1.65,1.69,2.47,3.9,2.47,6.64,0,2.27-.7,4.31-2.12,6.11-1.41,1.8-3.37,3.23-5.88,4.29-2.51,1.06-5.37,1.59-8.58,1.59-5.33,0-9.58-1.21-12.76-3.64-3.17-2.43-5.15-5.88-5.94-10.35l-13.05,2.7c1.02,6.9,4.35,12.38,9.99,16.46,5.64,4.08,12.77,6.11,21.4,6.11,5.64,0,10.78-1.02,15.4-3.06,4.62-2.04,8.27-4.86,10.93-8.46,2.66-3.6,4-7.64,4-12.11,0-5.64-1.35-10.13-4.06-13.46-2.7-3.33-5.9-5.78-9.58-7.35"/><path fill="var(--ink)" d="M684.58,435.17c-4.98-3.17-10.64-4.76-16.99-4.76-5.8,0-11.09,1.37-15.87,4.11-4.78,2.74-8.54,6.51-11.29,11.29-2.75,4.78-4.11,10.07-4.11,15.87s1.39,11.07,4.17,15.81c2.78,4.74,6.6,8.48,11.46,11.23,4.86,2.75,10.27,4.11,16.22,4.11,6.35,0,12.01-1.53,16.99-4.59,4.98-3.06,8.8-7.13,11.46-12.23l-10.35-4.59c-1.72,3.37-4.13,6-7.23,7.88-3.1,1.88-6.6,2.82-10.52,2.82s-7.29-.9-10.35-2.7c-3.06-1.8-5.45-4.25-7.17-7.35-1.09-1.95-1.83-4.05-2.23-6.29h49.73c.7-6.43-.2-12.34-2.7-17.75-2.51-5.41-6.25-9.7-11.23-12.87M657.89,443.81c2.94-1.8,6.17-2.7,9.7-2.7s6.7.82,9.52,2.47c2.82,1.65,5.07,3.92,6.76,6.82,1.05,1.8,1.8,3.72,2.25,5.76h-37.06c.42-1.73,1.05-3.38,1.89-4.94,1.68-3.13,4-5.6,6.94-7.41"/><rect fill="var(--ink)" x="704.5" y="404.66" width="12.34" height="87"/><path fill="var(--ink)" d="M750,431.29c-3.37,1.06-6.27,3.35-8.7,6.88-1.7,2.47-3.07,5.6-4.11,9.38v-15.96h-12.34v60.08h12.34v-33.98c0-3.76,1.04-7,3.11-9.7,2.08-2.7,4.92-4.53,8.52-5.47,3.6-.94,7.52-.82,11.76.35v-11.76c-3.68-.94-7.21-.88-10.58.18"/><path fill="var(--ink)" d="M810.24,409.36l-35.74,82.3h9.41l9.47-21.98h43.13l9.47,21.98h9.64l-35.62-82.3h-9.76ZM796.93,461.44l18.02-41.82,18.02,41.82h-36.04Z"/><rect fill="var(--ink)" x="859.03" y="409.36" width="9.05" height="82.3"/></svg>
+  <span><b>Made by Selr AI</b> · Skill install report · media-library-setup 1.0.0 · reviewed 2026-09-08 ·
+  static source review plus offline fixture tests; no live service was called.</span>
+</footer>
+
+</div><!-- /wrap -->
+</div><!-- /viz-root -->
+
+<script>
+// Theme toggle
+(function(){
+  var btn=document.getElementById('themeBtn'),root=document.documentElement,preference=matchMedia('(prefers-color-scheme:dark)');
+  function label(){var d=root.getAttribute('data-theme')==='dark'||
+    (!root.getAttribute('data-theme')&&preference.matches);
+    btn.textContent=d?'Light mode':'Dark mode';}
+  btn.addEventListener('click',function(){
+    var d=root.getAttribute('data-theme')==='dark'||
+      (!root.getAttribute('data-theme')&&preference.matches);
+    root.setAttribute('data-theme',d?'light':'dark');label();});
+  preference.addEventListener('change',label);
+  label();
+})();
+</script>
+</body><!-- srk:j90znf --></html>
